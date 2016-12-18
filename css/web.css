@@ -1,0 +1,349 @@
+/* ----------------------------------------------------------------------------------------------------------------------------- */
+/*                                                        FUENTES                                                                */
+
+@font-face
+{
+    font-family: 'Montserrat';
+    src: url(../fonts/Montserrat-Light.otf);
+}
+
+@font-face {
+    font-family: 'porta';
+    src: url('../fonts/pluton.eot?49924914');
+    src: url('../fonts/pluton.eot?49924914#iefix') format('embedded-opentype'),
+    url('../fonts/pluton.woff?49924914') format('woff'),
+    url('../fonts/pluton.ttf?49924914') format('truetype'),
+    url('../fonts/pluton.svg?49924914#porta') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* ----------------------------------------------------------------------------------------------------------------------------- */
+/*                                                        MEDIA QUERY                                                            */
+
+
+
+/* ----------------------------------------------------------------------------------------------------------------------------- */
+/*                                                       TAGS GENERALES                                                          */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Montserrat', Calibri, Tahoma, Arial, sans-serif;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+/* ----------------------------------------------------------------------------------------------------------------------------- */
+/*                                                        SLIDER                                                                 */
+
+.slider {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    background: transparent url(../images/Slider.png) repeat-x 0 0;
+    background-attachment: fixed;
+}
+
+.mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 500px;
+    background-color: #fef16c;
+    opacity: 0.85;
+}
+
+/* ----------------------------------------------------------------------------------------------------------------------------- */
+/*                                                  MENU PRINCIPAL                                                               */
+
+#main-nav {
+    width: 100%;
+    height: 70px;
+    background-color: #272727;
+}
+
+#main-nav img {
+    float: left;
+    width: 216px;
+    height: 50px;
+    position: relative;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+#main-nav ul {
+    float: right;
+    margin-right: 5px;
+}
+
+#main-nav ul li {
+    position: relative;
+    display: inline-block;
+    color: white;
+    padding: 15px 10px;
+    margin: 10px 3px;
+    font-size: 12px;
+    border: 1px solid rgba(0, 0, 0, 0);
+    transition: border-color 1s ease;
+    text-align: center;
+}
+
+.menuXI ul li {
+    min-width: 100px;
+}
+
+#main-nav ul li:hover {
+    cursor: pointer;
+}
+
+#main-nav ul li:hover,
+.active {
+    border: 1px solid #fef16c;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    background-color: rgba(39, 39, 39, .75)!important;
+}
+
+/* ----------------------------------------------------------------------------------------------------------------------------- */
+/*                                                        SUBMENU                                                                */
+
+#main-nav ul li:hover > .submenu {
+    transform-origin: top;
+    transform: scaleY(1);
+    transition: transform .5s ease;
+}
+
+#main-nav ul li:not(:hover) > .submenu {
+    transform-origin: top;
+    transform: scaleY(0);
+    transition: transform .5s ease;
+}
+
+.submenu {
+    transform: scaleY(0);
+    position: absolute;
+    top: 47px;
+    left: -1px;
+    width: calc(100% + 2px);
+    z-index: 1;
+    border: 1px gray solid;
+    border-top: 0;
+    border-radius: 0 0 5px 5px;
+    overflow: hidden;
+}
+
+.submenu a {
+    position: relative;
+    display: block;
+    padding: 0 5px;
+    line-height: 30px;
+    height: 30px;
+    text-align: left;
+    background-color: rgba(39, 39, 39, .9);
+    word-break: break-all;
+}
+
+.submenu a:last-child {
+    border-radius: 0 0 5px 5px;
+}
+
+.submenu a:not(:last-child):after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: gray;
+}
+
+.submenu a:hover {
+    background-color: rgba(90, 90, 90, .9);
+    transition-duration: 1s;
+}
+
+.small_menu {
+    float: right;
+    top: 5px;
+    border: 2px white solid;
+    border-radius: 5px;
+    color: white;
+    font-size: 24px;
+    width: 46px;
+    height: 46px;
+    line-height: 46px;
+    text-align: center;
+    margin: 10px;
+}
+
+/* ----------------------------------------------------------------------------------------------------------------------------- */
+/*                                                  CONTENIDO PRINCIPAL                                                          */
+
+main > div:nth-child(even) {
+    background-color: #fef16c;
+}
+
+main > div:nth-child(odd) {
+    background-color: #272727;
+    color: white;
+}
+
+main > div:last-child {
+    padding-bottom: 100px;
+}
+
+main > div {
+    position: relative;
+    word-wrap:break-word;
+    width: 100%;
+    padding: 40px 15px;
+}
+
+main > div:after {
+    content: '';
+    margin: 0 auto;
+    text-align: center;
+    width: 0;
+    height: 0;
+    border-left: 585px outset transparent;
+    border-right: 585px outset transparent;
+    position: absolute;
+    top: -10px;
+    left: calc(50% - 585px);
+}
+
+main > div:nth-child(even):after {
+    border-top: 30px solid #272727;
+}
+
+main > div:nth-child(odd):after {
+    border-top: 30px solid #fef16c;
+}
+
+main > div:first-child:after,
+main > div:nth-child(3):after {
+    display: none;
+}
+
+main > div h1,
+main > div h2 {
+    font-weight: normal;
+}
+
+/* ----------------------------------------------------------------------------------------------------------------------------- */
+/*                                                         1ª SECCIÓN                                                            */
+
+#presentacion {
+    text-align: center;
+}
+
+.things article > div:nth-child(2) > h3 {
+    font-weight: bold;
+    color: #fef16c;
+    padding-bottom: 20px;
+}
+
+.things article {
+    display: inline-table;
+    position: relative;
+    width: 33%;
+    height: 300px;
+}
+
+.things article > div:first-child > img {
+    display: inline;
+    border-radius: 50%;
+    border: 5px solid white;
+    width: 150px;
+    height: 150px;
+    margin-top: 15px;
+}
+
+.things article > div:first-child > img:hover {
+    transition-duration: .25s;
+    transform: scale(1.25);
+    margin-top: 0;
+}
+
+.things article > div:first-child {
+    position: absolute;
+    top: 0;
+    left: calc(50% - 90px);
+    width: 180px;
+    height: 180px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.things {
+    height: 350px;
+}
+
+.things.last {
+    margin-bottom: -30px;
+}
+
+.things article > div:nth-child(2) {
+    position: absolute;
+    top: 180px;
+}
+
+.wwd {
+    padding-bottom: 20px;
+}
+
+/* ----------------------------------------------------------------------------------------------------------------------------- */
+/*                                                           FOOTER                                                              */
+
+footer {
+    background-color: black;
+    color: white;
+    font-size: 18px;
+    padding: 5px 10px;
+}
+
+/* ----------------------------------------------------------------------------------------------------------------------------- */
+/*                                                            MISC                                                               */
+
+#subir {
+    display: none;
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+    z-index: 2000;
+    border: 1px black solid;
+    border-radius: 5px;
+    color: black;
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background-color: #fef16c;
+}
+
+#subir:hover {
+    transform: scale(1.15);
+    transition-duration: .5s;
+    cursor: pointer;
+}
+
+.orange {
+    color: #fef16c;
+}
+
+/* ----------------------------------------------------------------------------------------------------------------------------- */
