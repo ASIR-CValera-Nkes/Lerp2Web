@@ -2,70 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="33b8cd41-d90d-45cf-b1bd-b9b8392edcaf" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/wip.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/jquery-3.1.1.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/jquery-plugins/jquery.inview.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/jquery-ui.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/About.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/Client1.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/Client2.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/Client3.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/Ipad.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/Left.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/Portfolio01.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/Portfolio02.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/Portfolio03.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/Portfolio04.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/Portfolio05.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/Portfolio06.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/Portfolio07.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/Portfolio08.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/Portfolio09.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/Slider01.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/Slider02.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/Slider03.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/Team1.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/Team2.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/Team3.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/Thumbs.db" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/clients/ClientLogo01.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/clients/ClientLogo02.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/clients/ClientLogo03.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/clients/ClientLogo04.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/clients/ClientLogo05.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/clients/ClientLogo06.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/iBook.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/iMac.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/iPhone.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/ico/apple-touch-icon-114.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/ico/apple-touch-icon-144.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/ico/apple-touch-icon-57.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/ico/apple-touch-icon-72.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/ico/favicon.ico" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/psds/app.psd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/psds/console.psd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/psds/minecraft.psd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/psds/unity.psd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/psds/web-app.psd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/js/pngfix/supersleight-min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/js/pngfix/x.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/js/slide.js" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/images/logo-final.png" afterPath="$PROJECT_DIR$/images/logo.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/web.css" afterPath="$PROJECT_DIR$/css/web.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/web.js" afterPath="$PROJECT_DIR$/js/web.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/includes/afiliados.html" afterPath="$PROJECT_DIR$/web/includes/afiliados.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/includes/contactos.html" afterPath="$PROJECT_DIR$/web/includes/contactos.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/includes/miembros.html" afterPath="$PROJECT_DIR$/web/includes/miembros.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/includes/notificaciones.html" afterPath="$PROJECT_DIR$/web/includes/notificaciones.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/includes/presentacion.html" afterPath="$PROJECT_DIR$/web/includes/presentacion.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/includes/proyectos.html" afterPath="$PROJECT_DIR$/web/includes/proyectos.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/includes/proyectos_destacados.html" afterPath="$PROJECT_DIR$/web/includes/proyectos_destacados.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/main_menu.html" afterPath="$PROJECT_DIR$/web/main_menu.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/main_menu1k2.html" afterPath="$PROJECT_DIR$/web/main_menu1k2.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/start_slider.html" afterPath="$PROJECT_DIR$/web/start_slider.html" />
     </list>
     <ignored path="lerp2dev-enhanced.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -468,12 +405,20 @@
       <workItem from="1482088061584" duration="15578000" />
       <workItem from="1482108400647" duration="364000" />
       <workItem from="1482108803058" duration="76000" />
-      <workItem from="1482109317852" duration="2629000" />
+      <workItem from="1482109317852" duration="2717000" />
     </task>
+    <task id="LOCAL-00001" summary="Optimizado el contenido&#10;Añadido algunos efectos más">
+      <created>1482112031425</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1482112031425</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="64882000" />
+    <option name="totallyTimeSpent" value="64970000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -508,6 +453,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Optimizado el contenido&#10;Añadido algunos efectos más" />
+    <option name="LAST_COMMIT_MESSAGE" value="Optimizado el contenido&#10;Añadido algunos efectos más" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -756,6 +705,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="351">
           <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -763,6 +713,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -770,6 +721,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="334">
           <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -777,6 +729,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="18" column="33" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>
