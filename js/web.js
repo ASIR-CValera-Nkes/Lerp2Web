@@ -2,8 +2,13 @@
  * Created by Alvaro on 28/11/2016.
  */
 
+var zones = [],
+    lastClass = "start",
+    time;
+
 $(window).on("scroll", function() { //En el evento de scroll...
-    if ($(this).scrollTop() > 500)
+    cur_scroll = $(this).scrollTop();
+    if (cur_scroll > 500)
     { //Comprobar si el documento ha bajado más de la posición absoluta (en vertical) del menu para hacer que baje con el documento...
         $('#main-nav').addClass("sticky");
         $('#presentacion').css('padding-top', '70px');
@@ -13,43 +18,37 @@ $(window).on("scroll", function() { //En el evento de scroll...
         $('#main-nav').removeClass("sticky");
         $('#presentacion').css('padding-top', '0');
     }
-    botonDeAbajo($(this).scrollTop() > 50);
+    botonDeAbajo(cur_scroll > 50);
+    var _scroll = Math.round(cur_scroll / 100) * 100, //Redondeamos a las centenas el valor actual del scroll
+        scroll = _scroll > 0 ? _scroll : 0; //Si es menor a 0, que se puede dar el caso, entonces devolver 0 en vez de un numero negativo
+    if(window.innerWidth > 1200 && scroll in zones) //Aquí se buscará el elemento que corresponde dicho scroll
+    { //Solo vamos a hacer el efecto con una resolución mayor a 1200 pixeles
+        $("[data-dest='" + lastClass + "']").parent().removeClass('active');
+        $("[data-dest='" + zones[scroll] + "']").parent().addClass('active');
+        lastClass = zones[scroll];
+    }
 });
 
 $(document).ready(function () {
-    var i = 0, //Un simple contador, que luego utilizaremos para saber cuando ha cargado la última página dinámica
-        time = new Date().getTime(), //Esto es mero entretenimiento, no se cuanto variará pero con un i7-6700k y un ssd tarda 27ms
-        els = $('[data-flag="dynload"]'), //Obtenemos todos los elementos que tengan declarado este atributo, es como una bandera diciendo que divs tiene que cargar contenido dinámico
-        l = els.length; //Cuantos elementos hay con la bandera de carga dinámica
+    time = new Date().getTime(); //Esto es mero entretenimiento, no se cuanto variará pero con un i7-6700k y un ssd tarda 27ms
+    var els = $('[data-flag="dynload"]'), i = els.length; //Obtenemos todos los elementos que tengan declarado este atributo, es como una bandera diciendo que divs tiene que cargar contenido dinámico
     els.each(function () { //Cargar todas las paginas que tengan la bandera: "data-flag='dynload'", a traves de su atributo data-request
         var eth = $(this); //Esta variable pìenso que sobra, pero por no ensuciar mucho la sintaxis he decidido declararla
         if(eth.data("request") != "") //Comprobamos que la bandera no es nula, y en ese caso...
             eth.load("web/"+eth.data("request")+".html", function () { //Procedemos a la carga del contenido, y como callback...
-                ++i; //"Pre"-sumar al contador
-                if (l == i) //Hemos definido una función por orden de carga, así evitamos errores al acceder a elementos que aún no existen... (Me suele pasar mucho ^^')
+                if (!--i) //Hemos definido una función por orden de carga, así evitamos errores al acceder a elementos que aún no existen... (Me suele pasar mucho ^^')
                 { //Cuando cargue la ultima carga dinámica, procedemos a...
-                    //i = 0; //? Reseteamos el contador por si lo fueramos a usar, aunque yocreo que esto sobra...
                     menuResponsivo(function () { //Cargamos el menu de forma "responsiva", aunque bueno, aun sigue siendo para escritorio, puesto que comprobamos la resolución del monitor para cargar el menu de una forma u otra
-                        var dests = $("[data-dest]"), //Nuevamente para no ensuciar mucho la sintaxis y para obtener el numero total de elementos...
-                            ll = dests.length; //Numero total de elementos con la bandera data-dest, simplemente es para hacer que el menu al hacerle clcick a uno de sus elementos funcione
-                        dests.each(function (ii) { //Por cada elemento vamos a...
-                            if(ii > 0) //Primero, comprobar que el primer elemento no lo carguemos dinámicamente
-                            { //Simplemente, es el correspondiente  al botón Inicio, va antes en vez de después y que ya está cargado, por eso nos lo saltamos
-                                var inv = $(dests[ll - ii]).data("dest"); //Obtenemos los elementos de al revés para que cargue como se debe
-                                $("#main-nav").after('<div id="' + inv + '"></div>'); //Añadimos los divs con su id correspondiente, después del menú
-                                $("#" + inv).load("web/includes/" + inv + ".html"); //Finalmente, cargamos dinámicamente todos los elementos necesarios (son las secciones de la página)
-                            }
-                            if(ii == ll - 1)
-                            { //Una vez recorremos todo el contenido por completo entonces es cuando debemos de ejecutar la ultima instrucción...
-                                $("[data-dest]").each(function () { //Esta instrucción nuevamente recorre todos los elementos que tengan el atributo data-dest definido
-                                    $(this).on("click", function () { //Esta vez se les asigna que en el click vayan al elemento con la id correspondiente al valor su atributo data-dest
-                                        $("html, body").animate({scrollTop: $("#" + $(this).data("dest")).offset().top - 70}, 1000); //Hacer una equivalencia
-                                        return false;
-                                    });
-                                });
-                                console.log("Last template loaded in " + (new Date().getTime() - time) + " ms!"); //Por ultimo, mandamos el mensaje de cuanto ha durado
-                            }
-                        });
+                        var dests = document.querySelectorAll("[data-dest]:not([data-dest='start'])"); //Nuevamente para no ensuciar mucho la sintaxis y para obtener el numero total de elementos...
+                        for(var j = 0; j < dests.length; ++j)
+                        { //Por cada elemento vamos a...
+                            var id = dests[j].dataset.dest,
+                                div = document.createElement("div");
+                            div.id = id;
+                            div.className = "dyngen";
+                            document.getElementById("main-nav").parentNode.appendChild(div);
+                            $("#"+id).load("web/includes/" + id + ".html");
+                        }
                     });
                 }
             });
@@ -57,6 +56,7 @@ $(document).ready(function () {
     $("#subir").on("click", function () { //Esto hace que cuando hagamos click al boton de abajo a la derecha el scroll vaya hacia arriba
         $("html, body").animate({scrollTop: 0}, $(document).height()); //$(document).scrollTop() / $(document).height() * 1000 //Quiero hacer equivalente la subida
     });
+    waitForElementToDisplay(".triangle", 10, cargaDinCompleta);
 });
 
 //Only for debug purpouses
@@ -96,4 +96,44 @@ function botonDeAbajo(mostrar)
         $("#subir").fadeIn(tiempo * 2);
     else
         $("#subir").fadeOut(tiempo);
+}
+
+function setZones(fn)
+{ //Establecemos las zonas en ñlas que habrá un cambio...
+    $("[data-dest]").each(function (ii) {//Ignoramos el primer valor...
+        var item = $(this), //Obtenemos los elementos de al revés para que se establezca como se debe
+            inv = item.data("dest"); //Obtenemos el nombre
+        if(inv != "")
+        {
+            zones[Math.round($("#"+inv).offset().top / 100) * 100] = inv; //Añadimos este destino a dicha zona
+            item.on("click", function () { //Esta vez se les asigna que en el click vayan al elemento con la id correspondiente al valor su atributo data-dest
+                $("html, body").animate({scrollTop: $("#"+$(this).data("dest")).offset().top}, 1000); //Hacer una equivalencia
+                return false;
+            });
+            if(ii == $("[data-dest]").length - 1 && fn != null)
+                fn();
+        }
+    });
+}
+
+function waitForElementToDisplay(selector, time, fn)
+{
+    if(document.querySelector(selector) != null)
+        fn();
+    else
+        setTimeout(function() {
+            waitForElementToDisplay(selector, time, fn);
+        }, time);
+}
+
+function cargaDinCompleta() {
+    setZones(function() { //Establecer las zonas...
+        console.log("Last template loaded in " + (new Date().getTime() - time) + " ms!"); //Por ultimo, mandamos el mensaje de cuanto ha durado todo
+    });
+        $(".triangle").on('inview', function (event, visible) {
+            if (visible == true)
+                $(this).addClass("animated fadeInDown");
+            else
+                $(this).removeClass("animated fadeInDown");
+        });
 }
