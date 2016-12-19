@@ -19,11 +19,6 @@
 }
 
 /* ----------------------------------------------------------------------------------------------------------------------------- */
-/*                                                        MEDIA QUERY                                                            */
-
-
-
-/* ----------------------------------------------------------------------------------------------------------------------------- */
 /*                                                       TAGS GENERALES                                                          */
 
 * {
@@ -41,9 +36,13 @@ body {
     font-family: 'Montserrat', Calibri, Tahoma, Arial, sans-serif;
 }
 
-a {
+a, #main-nav a {
     color: white;
     text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 /* ----------------------------------------------------------------------------------------------------------------------------- */
@@ -364,6 +363,12 @@ footer {
     color: #fef16c;
 }
 
+#progbar {
+    transition-duration: 1s;
+    transition-property: width;
+    overflow: hidden;
+}
+
 main > div img[src="images/wip.png"] {
     width: 200px;
     height: 200px;
@@ -391,6 +396,17 @@ main > div img[src="images/wip.png"] {
 
 .fadeInDown {
     animation-name: fadeInDown;
+}
+
+/* ----------------------------------------------------------------------------------------------------------------------------- */
+/*                                                        MEDIA QUERY                                                            */
+
+@media screen and (min-width: 600px) {
+    .triangle {
+        border-left: 350px outset transparent;
+        border-right: 350px outset transparent;
+        left: calc(50% - 350px);
+    }
 }
 
 /* ----------------------------------------------------------------------------------------------------------------------------- */

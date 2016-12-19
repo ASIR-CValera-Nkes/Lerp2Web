@@ -56,7 +56,7 @@ $(document).ready(function () {
     $("#subir").on("click", function () { //Esto hace que cuando hagamos click al boton de abajo a la derecha el scroll vaya hacia arriba
         $("html, body").animate({scrollTop: 0}, $(document).height()); //$(document).scrollTop() / $(document).height() * 1000 //Quiero hacer equivalente la subida
     });
-    waitForElementToDisplay(".triangle", 10, cargaDinCompleta);
+    waitForElementToDisplay("#completed", 10, cargaDinCompleta);
 });
 
 //Only for debug purpouses
@@ -130,10 +130,40 @@ function cargaDinCompleta() {
     setZones(function() { //Establecer las zonas...
         console.log("Last template loaded in " + (new Date().getTime() - time) + " ms!"); //Por ultimo, mandamos el mensaje de cuanto ha durado todo
     });
-        $(".triangle").on('inview', function (event, visible) {
-            if (visible == true)
-                $(this).addClass("animated fadeInDown");
-            else
-                $(this).removeClass("animated fadeInDown");
-        });
+    $(".triangle").on('inview', function (event, visible) {
+        if (visible == true)
+            $(this).addClass("animated fadeInDown");
+        else
+            $(this).removeClass("animated fadeInDown");
+    });
+    $("#progbar").on('inview', function (event, visible) {
+        if (visible == true)
+            move();
+        else
+            unmove();
+    });
+}
+
+function move() 
+{
+  var elem = document.getElementById("progbar"),
+      width = 0,
+      id = setInterval(frame, 50);
+  function frame() 
+  {
+    if (width >= 5)
+      clearInterval(id);
+    else 
+    {
+      ++width; 
+      elem.style.width = width + '%'; 
+      document.getElementById("demo").innerHTML = width * 1 + '%';
+    }
+  }
+}
+
+function unmove() {
+    var elem = document.getElementById("progbar");
+    elem.style.width = "0%";
+    document.getElementById("demo").innerHTML = "0%";
 }
