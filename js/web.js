@@ -31,24 +31,45 @@ $(window).on("scroll", function() { //En el evento de scroll...
 
 $(document).ready(function () {
     time = new Date().getTime(); //Esto es mero entretenimiento, no se cuanto variará pero con un i7-6700k y un ssd tarda 27ms
-    var els = $('[data-flag="dynload"]'), i = els.length; //Obtenemos todos los elementos que tengan declarado este atributo, es como una bandera diciendo que divs tiene que cargar contenido dinámico
-    els.each(function () { //Cargar todas las paginas que tengan la bandera: "data-flag='dynload'", a traves de su atributo data-request
+    var fel = $('[data-flag="frontload"]'), j = fel.length;
+    fel.each(function () {
         var eth = $(this); //Esta variable pìenso que sobra, pero por no ensuciar mucho la sintaxis he decidido declararla
         if(eth.data("request") != "") //Comprobamos que la bandera no es nula, y en ese caso...
-            eth.load("web/"+eth.data("request")+".html", function () { //Procedemos a la carga del contenido, y como callback...
-                if (!--i) //Hemos definido una función por orden de carga, así evitamos errores al acceder a elementos que aún no existen... (Me suele pasar mucho ^^')
+            eth.load("web/frontpages/"+eth.data("request")+".html", function () { //Procedemos a la carga del contenido, y como callback...
+                if (!--j) //Hemos definido una función por orden de carga, así evitamos errores al acceder a elementos que aún no existen... (Me suele pasar mucho ^^')
                 { //Cuando cargue la ultima carga dinámica, procedemos a...
-                    menuResponsivo(function () { //Cargamos el menu de forma "responsiva", aunque bueno, aun sigue siendo para escritorio, puesto que comprobamos la resolución del monitor para cargar el menu de una forma u otra
-                        var dests = document.querySelectorAll("[data-dest]:not([data-dest='start'])"); //Nuevamente para no ensuciar mucho la sintaxis y para obtener el numero total de elementos...
-                        for(var j = 0; j < dests.length; ++j)
-                        { //Por cada elemento vamos a...
-                            var id = dests[j].dataset.dest,
-                                div = document.createElement("div");
-                            div.id = id;
-                            div.className = "dyngen";
-                            document.getElementById("main-nav").parentNode.appendChild(div);
-                            $("#"+id).load("web/includes/" + id + ".html");
-                        }
+                    var els = $('[data-flag="dynload"]'), i = els.length; //... Obtener todos los elementos que tengan declarado este atributo, es como una bandera diciendo que divs tiene que cargar contenido dinámico
+                    els.each(function () { //Cargar todas las paginas que tengan la bandera: "data-flag='dynload'", a traves de su atributo data-request
+                        var eth = $(this); //Esta variable pìenso que sobra, pero por no ensuciar mucho la sintaxis he decidido declararla
+                        if(eth.data("request") != "") //Comprobamos que la bandera no es nula, y en ese caso...
+                            eth.load("web/sections/"+eth.data("request")+".html", function () { //Procedemos a la carga del contenido, y como callback...
+                                if (!--i) //Hemos definido una función por orden de carga, así evitamos errores al acceder a elementos que aún no existen... (Me suele pasar mucho ^^')
+                                { //Cuando cargue la ultima carga dinámica, procedemos a...
+                                    menuResponsivo(function () { //Cargamos el menu de forma "responsiva", aunque bueno, aun sigue siendo para escritorio, puesto que comprobamos la resolución del monitor para cargar el menu de una forma u otra
+                                        var dests = document.querySelectorAll("[data-dest]:not([data-dest='start'])"); //Nuevamente para no ensuciar mucho la sintaxis y para obtener el numero total de elementos...
+                                        for(var j = 0; j < dests.length; ++j)
+                                        { //Por cada elemento vamos a...
+                                            var id = dests[j].dataset.dest,
+                                                div = document.createElement("div");
+                                            div.id = id;
+                                            div.className = "dyngen";
+                                            document.getElementById("main-nav").parentNode.appendChild(div);
+                                            $("#"+id).load("web/includes/" + id + ".html");
+                                        }
+                                    });
+                                    $("[data-func]").each(function () {
+                                        $(this).text(window[$(this).data("func")]);
+                                    });
+                                    $("[data-destslide]").each(function () {
+                                        $(this).on('click', function () {
+                                            var webpage = $(".web-page.active");
+                                            webpage.hide("slide", { direction: "left" }, 1000);
+                                            webpage.removeClass("active");
+                                            $('[data-request="' + $(this).data("destslide") + '"]').addClass("active");
+                                        })
+                                    });
+                                }
+                            });
                     });
                 }
             });
@@ -63,6 +84,10 @@ $(document).ready(function () {
 $(window).on("resize", function() {
     menuResponsivo();
 });
+
+function getYear() {
+    return new Date().getFullYear();
+}
 
 function menuResponsivo(fn)
 { //Esta funcion hace que según la anchura en pixeles de tu monitor se cargue uno u otro menu
@@ -86,7 +111,7 @@ function menuResponsivo(fn)
         if(mn.hasClass("menuVI"))
             mn.removeClass("menuVI");
     }
-    mn.load("web/main_menu" + dim + ".html", fn);
+    mn.load("web/sections/main_menu" + dim + ".html", fn);
 }
 
 function botonDeAbajo(mostrar)
