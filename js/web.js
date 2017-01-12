@@ -4,7 +4,8 @@
 
 var zones = [],
     lastClass = "start",
-    time;
+    time,
+    curProgress = 6;
 
 $(window).on("scroll", function() { //En el evento de scroll...
     cur_scroll = $(this).scrollTop();
@@ -176,7 +177,7 @@ function move()
       id = setInterval(frame, 50);
   function frame() 
   {
-    if (width >= 5)
+    if (width >= curProgress)
       clearInterval(id);
     else 
     {
@@ -191,4 +192,8 @@ function unmove() {
     var elem = document.getElementById("progbar");
     elem.style.width = "0%";
     document.getElementById("demo").innerHTML = "0%";
+}
+
+function getProg() {
+    return curProgress;
 }
