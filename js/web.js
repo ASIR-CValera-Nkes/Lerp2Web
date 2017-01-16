@@ -2,10 +2,16 @@
  * Created by Alvaro on 28/11/2016.
  */
 
+/*
+
+Hacer que lo del document.ready se llame dos veces para que las paginas que se hayan cargado que tengan tb carga dinamica se carguen o bien meter un script con un a $(function) en la pagina?...
+
+*/
+
 var zones = [],
     lastClass = "start",
     time,
-    curProgress = 6;
+    curProgress = 10;
 
 $(window).on("scroll", function() { //En el evento de scroll...
     cur_scroll = $(this).scrollTop();
@@ -13,11 +19,13 @@ $(window).on("scroll", function() { //En el evento de scroll...
     { //Comprobar si el documento ha bajado más de la posición absoluta (en vertical) del menu para hacer que baje con el documento...
         $('#main-nav').addClass("sticky");
         $('#presentacion').css('padding-top', '70px');
+        $('.scrollprog').css('display', 'block');
     }
     else
     { //Si no, hacer que se quede quieto en su posición
         $('#main-nav').removeClass("sticky");
         $('#presentacion').css('padding-top', '0');
+        $('.scrollprog').css('display', 'none');
     }
     botonDeAbajo(cur_scroll > 50);
     var _scroll = Math.round(cur_scroll / 100) * 100, //Redondeamos a las centenas el valor actual del scroll
@@ -28,6 +36,8 @@ $(window).on("scroll", function() { //En el evento de scroll...
         $("[data-dest='" + zones[scroll] + "']").parent().addClass('active');
         lastClass = zones[scroll];
     }
+    if($(".scrollprog"))
+        $(".scrollprog").css("width", ((cur_scroll + window.innerHeight) * 100 / $(document).height()) + "%");
 });
 
 $(document).ready(function () {
@@ -57,17 +67,9 @@ $(document).ready(function () {
                                             document.getElementById("main-nav").parentNode.appendChild(div);
                                             $("#"+id).load("web/includes/" + id + ".html");
                                         }
-                                    });
-                                    $("[data-func]").each(function () {
-                                        $(this).text(window[$(this).data("func")]);
-                                    });
-                                    $("[data-destslide]").each(function () {
-                                        $(this).on('click', function () {
-                                            var webpage = $(".web-page.active");
-                                            webpage.hide("slide", { direction: "left" }, 1000);
-                                            webpage.removeClass("active");
-                                            $('[data-request="' + $(this).data("destslide") + '"]').addClass("active");
-                                        })
+                                        $("[data-destslide]").each(function () {
+                                            $(this).on('click', slideCont);
+                                        });
                                     });
                                 }
                             });
@@ -95,9 +97,9 @@ function menuResponsivo(fn)
     var w = $(window).width(),
         dim = "",
         mn = $("#main-nav");
-    if(w <= 1200 && w > 600)
+    if(w <= 1300 && w > 600)
     {
-        dim = "1k2";
+        dim = "1k3";
         mn.addClass("menuXI"); //Si fuera necesario para el css
     }
     else if(w <= 600)
@@ -105,7 +107,7 @@ function menuResponsivo(fn)
         dim = "6";
         mn.addClass("menuVI"); //Si fuera necesario para el css
     }
-    else if(w > 1200)
+    else if(w > 1300)
     {
         if(mn.hasClass("menuXI"))
             mn.removeClass("menuXI");
@@ -168,6 +170,16 @@ function cargaDinCompleta() {
         else
             unmove();
     });
+    $("[data-func]").each(function () {
+        $(this).text(window[$(this).data("func")]);
+    });
+    $("[data-destslide]").each(function () {
+        var hash = window.location.hash;
+        hash = hash ? hash.substr(1) : hash;
+        if(window.location.hash && hash == $(this).data("destslide")) {
+            slideCont();
+        }
+    });
 }
 
 function move() 
@@ -196,4 +208,13 @@ function unmove() {
 
 function getProg() {
     return curProgress;
+}
+
+function slideCont() {
+    var webpage = $(".web-page.activewp");
+    if(webpage) {
+        webpage.hide("slide", { direction: "right" }, 1000);
+        webpage.removeClass("activewp");
+    }
+    $('[data-request="' + $(this).data("destslide") + '"]').addClass("activewp");
 }

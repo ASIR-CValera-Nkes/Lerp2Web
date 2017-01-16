@@ -1,31 +1,92 @@
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
+<h1>¿Quiénes somos nosotros?</h1>
+<br>
+<p class="center">Estos somos los actuales staffs del equipo.</p>
+<hr>
+<br>
+<h1>WIP</h1>
+<!--- Cambiar esta m...
+<div class="staff">
+    <div>
+        <h2>Administradores</h2>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <br>
+    <div>
+        <h2>Moderadores</h2>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <br>
+    <div>
+        <h2>Redactores</h2>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <br>
+    <div>
+        <h2>Marketing</h2>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+-->
+<hr>
+<br>
+<h1>Miembros de la comunidad</h1>
+<br>
+<!--- Hacer que para mostar los miebmros en php se calcule las dimensiones de la pantalla y de ahi se saque cuantos usuarios mostrar para cubrir 5 filas -->
+<div class="members"></div>
+<br>
+<h3 class="center">[1 2 3 4 5 6 7 ... 50 (51) 52 ... 98 99 100]</h3> <!--- Quizás cuando la web aumente su capacidad, mostrar el paginator sea peligroso -->
+<br>
+<p class="center">
+    Actualmente somos más x miembros a que esperas para formar de esta magnífica comunidad.
+    <center>
+        <p>Disfruta de una experiencia libre de publicidad pulsando este botón:</p>
+        <br>
+        <input type="button" value="Registrate">
+        <br><br>
+        <p>O si ya tienes cuenta, logueate:</p>
+        <br>
+        <input type="button" value="Iniciar sesión">
+    </center>
+</p>
+<br>
+<center>
+    <h3>¿No encuentras a un usuario determinado?</h3>
+    <br>
+    <p>Búscalo usando el botón de más abajo.</p>
+    <br>
+    <input type="button" value="Buscar usuario">
+</center>
+<br>
+<hr>
+<br>
+<h1>¿Quién está en línea?</h1>
+<br>
+<div class="members"></div>
+<br>
+<p class="center">
+    Actualmente hay x miembros conectados. El máximo de hoy han sido x conexiones.
+</p>
+<br>
+<h3 class="center">¿Quieres ver más estadísticas?</h3>
+<br>
+<p class="center">A nosotros nos encanta recopilar información y estadísticas sobre todos los aspectos de nuestras creaciones, así que no dudes ni un segundo en consultarlas tu también, porque de verdad que no tienen pérdida.</p>
+<br>
+<center><input type="button" value="Consultar estadísticas"></center>
+<script>
+    $(function() {
+        $(".members").ready(function() {
+            var cuant = Math.round((window.innerWidth - 30) / (64 + 8)) * 5;
+            for(var i = 0; i < cuant; ++i)
+                $(".members").append("<div></div>");
+        });
+    });
+</script>
 <div class="triangle"></div>

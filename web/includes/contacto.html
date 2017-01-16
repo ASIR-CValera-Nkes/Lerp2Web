@@ -1,0 +1,63 @@
+
+<div class="newsletter breakcont">
+   <h2>Boletines</h2>
+   <hr>
+   <br>
+    <div class="newsl">
+       <div>
+           Suscribete a nuestro boletin para recibir información semanal sobre nuestros avances y publicaciones en nuestra página.
+       </div>
+       <div>
+           <input type="text" placeholder="Escribe tu correo">
+           <input type="button" value="Suscribete">
+       </div>
+    </div>
+</div>
+<h1>Contacto</h1>
+<br>
+<p class="center">Escribenos un mensaje para ponerte en contacto con nosotros, en menos de 24h tendrás una respuesta.</p>
+<hr>
+<br>
+<div class="contact">
+   <div>
+     <div>
+       <h2>Formulario de contacto</h2>
+       <div class="contform" data-frame="formulario-contacto.html"></div>
+    </div>
+    <div>
+       <h2>Mapa</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12680.42787829286!2d-2.15305817185357!3d37.38730247730711!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd65362062ed19a7%3A0x904ac88dc59c2ed8!2zQWxib3gsIEFsbWVyw61h!5e0!3m2!1ses!2ses!4v1484496628933" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+    </div>  
+   </div>
+    <br><br><br>
+    <div>
+        <h3 class="highl">C/ Topares Nº 87 Planta 2B</h3>
+        <div class="conttext">
+            <input type="text" value="lerp2dev@gmail.com" class="selec" readonly> <input type="button" value="Copiar"> <input type="button" value="Enviar correo (mailto:)">
+        </div>
+        <h3 class="highl">+34 672 98 56 78</h3>
+        <br>
+        <h3>Somos sociales</h3>
+        <br>
+        <hr class="mid">
+        <br>
+        <div>
+            <img src="" alt="Facebook">
+            <img src="" alt="Github">
+            <img src="" alt="YouTube">
+            <img src="" alt="Unity">
+            <img src="" alt="Twitter">
+            <img src="" alt="G+">
+        </div>
+    </div>
+</div>
+<script>
+    $(function() {
+        $("[data-frame]").each(function() {
+            var fr = $(this).data("frame");
+            if(fr != "")
+            $(this).load("web/frames/"+fr);
+        });
+    });
+</script>
+<div id="completed"></div>
