@@ -3,7 +3,9 @@
 <p class="center">Estos somos los actuales staffs del equipo.</p>
 <hr>
 <br>
-<h1>WIP</h1>
+<center>
+    <img src="https://i.gyazo.com/c6ca1b7241681bc8295f9198accc4631.png" alt="">
+</center>
 <!--- Cambiar esta m...
 <div class="staff">
     <div>
@@ -41,7 +43,6 @@
 <br>
 <!--- Hacer que para mostar los miebmros en php se calcule las dimensiones de la pantalla y de ahi se saque cuantos usuarios mostrar para cubrir 5 filas -->
 <div class="members"></div>
-<br>
 <h3 class="center">[1 2 3 4 5 6 7 ... 50 (51) 52 ... 98 99 100]</h3> <!--- Quizás cuando la web aumente su capacidad, mostrar el paginator sea peligroso -->
 <br>
 <p class="center">
@@ -83,7 +84,7 @@
 <script>
     $(function() {
         $(".members").ready(function() {
-            var cuant = Math.round((window.innerWidth - 30) / (64 + 8)) * 5;
+            var cuant = Math.round((window.innerWidth - 30) / (64 + 9)) * 5;
             for(var i = 0; i < cuant; ++i)
                 $(".members").append("<div></div>");
         });

@@ -3,33 +3,31 @@
 <p class="center">Aquí se mostrarán los últimos enviados por el equipo.</p>
 <hr>
 <br>
+<ul class="proj_cats">
+    <li class="active">TODOS</li>
+    <li>MINIJUEGOS</li>
+    <li>ASSETS UNITY</li>
+    <li>SERVICIOS WEB</li>
+    <li>APLICACIONES DE ESCRITORIO</li>
+    <li>PLUGINS MC</li>
+</ul>
+<img id="ghost_popup" style="display: none; margin-top: 15px; margin-left: 30px;" src="https://i.gyazo.com/04e6b017e41e2de2b8ec888389f82f9e.png" alt="">
 <div class="projcontainer">
-    <!--- <ul>
-        <li>
-            <div class="thumbnail animated fadeInDown">
-                <img src="https://placehold.it/640x400" alt="project 1">
-                <a href="#single-project" class="more show_hide" rel="#slidingDiv">
-                    <i class="icon-plus"></i>
-                </a>
-                <h3>Thumbnail label</h3>
-                <p>Thumbnail caption...</p>
-                <div class="mask"></div>
-            </div>
-        </li>
-    </ul> -->
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
+    <!--- <div class="thumbnail">
+        <img src="https://placehold.it/640x400">
+        <div class="caption">
+            <h3>Thumbnail label</h3>
+            <p>Thumbnail caption...</p>
+        </div>
+        <div class="mask">
+            <a href="#single-project" class="more">
+                <i class="fa fa-fw fa-plus"></i>
+            </a>
+        </div>
+    </div> -->
 </div>
+<h3 class="center">[1 2 3 4 5 6 7 ... 50 (51) 52 ... 98 99 100]</h3>
+<!--- Al hacer el paginator hacer que con un &section=xxx se vaya a x sección -->
 <br>
 <center>
     <h3>¿No aparece el proyecto que buscas en esta lista?</h3>
@@ -38,4 +36,18 @@
     <br>
     <input type="button" value="Buscar proyecto" />
 </center>
+<script>
+    $(function() {
+       for(var i = 0; i < 9; ++i) {
+           var c = '<div class="thumbnail"><img src="https://placehold.it/640x400"><div class="caption"><h3>Project name</h3><p>Project description</p></div><div class="mask"><a href="#single-project" class="more"><i class="fa fa-fw fa-plus"></a></div></div>';
+           $(".projcontainer").append(c);
+       }
+        $(".more").on('click', function() {
+           $("#ghost_popup").show(1000); 
+        });
+        $("#ghost_popup").on('click', function() {
+           $(this).hide(1000); 
+        });
+    });
+</script>
 <div class="triangle"></div>
