@@ -36,8 +36,12 @@ $(window).on("scroll", function() { //En el evento de scroll...
         $("[data-dest='" + zones[scroll] + "']").parent().addClass('active');
         lastClass = zones[scroll];
     }
-    if($(".scrollprog"))
-        $(".scrollprog").css("width", ((cur_scroll + window.innerHeight) * 100 / $(document).height()) + "%");
+    if($(".scrollprog")) 
+    {
+        var porcentaje = (cur_scroll - 500) * 100 / ($(document).height() - window.innerHeight - 500);
+        //fade(document.getElementsByClassName("scrollprog")[0], "background-color", {r: 255, g: 0, b: 0}, {r: 0, g: 255, b: 0}, porcentaje);
+        $(".scrollprog").css("width", porcentaje + "%");
+    }
 });
 
 var menu = ["presentacion", "proyectos_destacados", "proyectos", "miembros", "afiliados", "notificaciones", "contacto"];
@@ -232,3 +236,25 @@ function slideCont() {
 function getPixels(per) {
     return window.innerWidth * per;
 }
+
+lerp = function(a, b, u) {
+    return (1 - u) * a + u * b;
+};
+
+fade = function(el, property, start, end, duration) {
+    var interval = 10;
+    var steps = duration / interval;
+    var step_u = 1.0 / steps;
+    var u = 0.0;
+    var theInterval = setInterval(function() {
+        if (u >= 1.0) {
+            clearInterval(theInterval);
+        }
+        var r = Math.round(lerp(start.r, end.r, u));
+        var g = Math.round(lerp(start.g, end.g, u));
+        var b = Math.round(lerp(start.b, end.b, u));
+        var colorname = 'rgb(' + r + ',' + g + ',' + b + ')';
+        el.style.setProperty(property, colorname);
+        u += step_u;
+    }, interval);
+};
