@@ -103,9 +103,9 @@ function menuResponsivo(fn)
     var w = $(window).width(),
         dim = "",
         mn = $("#main-nav");
-    if(w <= 1300 && w > 600)
+    if(w <= 1250 && w > 600)
     {
-        dim = "1k3";
+        dim = "1k25";
         mn.addClass("menuXI"); //Si fuera necesario para el css
     }
     else if(w <= 600)
@@ -113,7 +113,7 @@ function menuResponsivo(fn)
         dim = "6";
         mn.addClass("menuVI"); //Si fuera necesario para el css
     }
-    else if(w > 1300)
+    else if(w > 1250)
     {
         if(mn.hasClass("menuXI"))
             mn.removeClass("menuXI");
@@ -140,7 +140,7 @@ function setZones(fn)
             inv = item.data("dest"); //Obtenemos el nombre
         if(inv != "")
         {
-            zones[Math.round($("#"+inv).offset().top / 100) * 100] = inv; //Añadimos este destino a dicha zona
+            zones[Math.round(($("#"+inv).offset() != null ? $("#"+inv).offset().top : 0) / 100) * 100] = inv; //Añadimos este destino a dicha zona
             item.on("click", function () { //Esta vez se les asigna que en el click vayan al elemento con la id correspondiente al valor su atributo data-dest
                 $("html, body").animate({scrollTop: $("#"+$(this).data("dest")).offset().top}, 1000); //Hacer una equivalencia
                 return false;
@@ -193,6 +193,37 @@ function cargaDinCompleta() {
         w = w.indexOf("%") > -1 ? window.innerWidth * (parseInt(w.replace("%", "")) / 100) : w.replace("px", "");
         h = h.indexOf("%") > -1 ? window.innerWidth * (parseInt(h.replace("%", "")) / 100) : h.replace("px", "");
         $(this).attr("src", "http://placehold.it/"+w+"x"+h);
+    });
+    $("pbar").each(function() {
+        var per = $(this).data('percentage'),
+            caption = $(this).data('caption');
+        $(this).replaceWith(
+            $("<div>").attr('id', 'progress').addClass('graph')
+            .on('inview', function (event, visible) {
+                if(visible)
+                    $(this).children("#bar").prop('Counter', 0).animate({
+                        width: per + '%'
+                    }, 3000, null).children("p")
+                    .animate({ Counter: parseInt(per) }, {
+                        duration: 3000,
+                        easing: 'swing',
+                        step: function () {
+                          $(this).children("span").text(Math.ceil(this.Counter));
+                        },
+                        complete: function() {
+                            this.Counter = 0;
+                        }
+                    });
+                else
+                    $(this).children("#bar").css('width', '0');
+            }).append(
+                $("<div>").attr('id', 'bar').append(
+                    $("<p>").text(caption == null || caption == "" ? "" : "" + caption + ": ")
+                    .append($("<span>").text(per))
+                    .append("%")
+                )
+            )
+        );
     });
 }
 

@@ -413,6 +413,10 @@ footer {
     color: #fef16c;
 }
 
+.brange {
+    border: 1px solid #fef16c;
+}
+
 #progbar {
     transition-duration: 1s;
     transition-property: width;
@@ -486,6 +490,10 @@ main > div img[src="images/wip.png"] {
     font-size: 110%;
     padding: 11px!important;
     text-align: center;
+}
+
+.left {
+    text-align: left;
 }
 
 .center {
@@ -774,6 +782,44 @@ main > div img[src="images/wip.png"] {
     padding-bottom: 20px;
 }
 
+.skills {
+    display: flex;
+}
+
+.skills > div {
+    width: calc(50% - 0px);
+    padding: 0 25px;
+}
+
+.skills > div:nth-child(2) {
+    display: table;
+    background-color: white;
+    color: black;
+    height: 295px;
+}
+
+.skills > div:nth-child(2) h1 {
+    margin-bottom: 20px;
+}
+
+.skills > div:nth-child(2) > span {
+    display: table-cell;
+    vertical-align: middle;
+    line-height: normal;
+}
+
+.skills > div:first-child {
+    display: inline-block;
+}
+
+.skills > div:first-child > #progress:first-child {
+    margin-top: 0;
+}
+
+.skills > div:first-child > #progress:last-child {
+    margin-bottom: 0;
+}
+
 /* ----------------------------------------------------------------------------------------------------------------------------- */
 /*                                                           PROYECTOS                                                           */
 
@@ -887,6 +933,58 @@ main > div img[src="images/wip.png"] {
     color: black;
 }
 
+#project_popup {
+    display: none;
+    margin: 10px 30px;
+    position: relative;
+    padding: 5px;
+    border: 1px black solid;
+}
+
+#project_popup > div:not(:nth-child(3)) {
+    display: inline-block;
+    width: 50%;
+    max-height: 400px;
+}
+
+#project_popup > div:nth-child(2) {
+    margin-left: 30px;
+    margin-right: 0px;
+    padding: 20px;
+}
+
+#project_popup h3 {
+    display: inline-block;
+}
+
+#project_popup h3:nth-child(odd) {
+    width: 220px;
+}
+
+.project_close {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: right;
+    color: gray;
+    font-weight: bold;
+    font-size: 200%;
+    z-index: 6;
+}
+
+.proj_cat {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(255, 255, 0, .75);
+    border: 1px solid black;
+    padding: 2px 5px;
+    color: black;
+}
+
 /* ----------------------------------------------------------------------------------------------------------------------------- */
 /*                                                      PROYECTOS DESTACADOS                                                     */
 
@@ -920,6 +1018,30 @@ main > div img[src="images/wip.png"] {
 
 .fadeInDown {
     animation-name: fadeInDown;
+}
+
+/* ----------------------------------------------------------------------------------------------------------------------------- */
+/*                                                          BARRA DE PROGRESO                                                    */
+
+.graph {
+    margin: 25px 0;
+    padding: 2px;
+    background-color: white;
+    color: black;
+    position: relative;
+}
+
+#bar {
+    width: 0;
+    height: 35px; /* Not 30px because the 1px top-border brings it up to 30px to match #graph */
+    background-color: #fef16c;
+}
+
+#bar p { 
+    position: absolute; 
+    text-align: center; 
+    width: calc(100% - 4px);
+    line-height: 35px; 
 }
 
 /* ----------------------------------------------------------------------------------------------------------------------------- */
