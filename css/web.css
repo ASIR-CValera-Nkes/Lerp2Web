@@ -508,6 +508,48 @@ main > div img[src="images/wip.png"] {
     margin: 0 auto;
 }
 
+.ctint.member .circled {
+    filter: invert(0.2) sepia(1) saturate(2);
+    width: 32px;
+    height: 32px;
+}
+
+.ctint.member:hover .circled,
+.ctint.social:hover .circled,
+.ctint.member:not(:hover) .circled,
+.ctint.social:not(:hover) .circled {
+    transition-duration: 1s;
+}
+
+.ctint.member:hover .circled,
+.ctint.social:hover .circled {
+    filter: invert(1);
+}
+
+.ctint.social .circled {
+    width: 48px;
+    height: 48px;
+}
+
+.ctint.social {
+    margin: 0 10px;
+}
+
+.ctint {
+    display: inline-block;
+    position: relative;
+}
+
+.ctint:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
 /* ----------------------------------------------------------------------------------------------------------------------------- */
 /*                                                           AFILIADOS                                                           */
 
@@ -533,8 +575,6 @@ main > div img[src="images/wip.png"] {
     height: 150px;
     padding: 10px;
     background: #333;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
     border-radius: 10px;
     border: #FFFFFF solid 1px;
     color: white;
@@ -909,10 +949,6 @@ main > div img[src="images/wip.png"] {
     width: calc(100% - 8px);
     height: calc(100% - 58px);
 	background: #272727;
-	-webkit-transition: all 0.2s ease-out;
-	-moz-transition: all 0.2s ease-out;
-	-o-transition: all 0.2 s ease-out;
-	-ms-transition: all 0.2s ease-out;
 	transition: all 0.2s ease-out;
 }
 
