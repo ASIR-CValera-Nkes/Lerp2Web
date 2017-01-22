@@ -39,7 +39,7 @@ body {
 a, #main-nav a {
     color: white;
     text-decoration: none;
-    }
+}
 
 a:hover {
     text-decoration: underline;
