@@ -39,7 +39,7 @@ body {
 a, #main-nav a {
     color: white;
     text-decoration: none;
-    }
+}
 
 a:hover {
     text-decoration: underline;
@@ -94,10 +94,7 @@ footer {
 }
 
 input[type="text"],
-<<<<<<< HEAD
 input[type="password"],
-=======
->>>>>>> 3ebcd02028023da3b6cd043ba04ba42ef077b617
 input[type="button"],
 input[type="submit"],
 textarea {
@@ -106,10 +103,7 @@ textarea {
 }
 
 input[type="text"],
-<<<<<<< HEAD
 input[type="password"],
-=======
->>>>>>> 3ebcd02028023da3b6cd043ba04ba42ef077b617
 textarea {
     /*background-color: white;*/
     box-shadow: inset 1px 1px 2px #ddd;
@@ -387,7 +381,6 @@ footer {
 }
 
 /* ----------------------------------------------------------------------------------------------------------------------------- */
-<<<<<<< HEAD
 /*                                                         LOGIN PANEL                                                           */
 
 .login_ad {
@@ -395,8 +388,6 @@ footer {
 }
 
 /* ----------------------------------------------------------------------------------------------------------------------------- */
-=======
->>>>>>> 3ebcd02028023da3b6cd043ba04ba42ef077b617
 /*                                                            MISC                                                               */
 
 #subir {
@@ -435,15 +426,6 @@ footer {
     border: 1px solid #fef16c;
 }
 
-<<<<<<< HEAD
-=======
-#progbar {
-    transition-duration: 1s;
-    transition-property: width;
-    overflow: hidden;
-}
-
->>>>>>> 3ebcd02028023da3b6cd043ba04ba42ef077b617
 main > div img[src="images/wip.png"] {
     width: 200px;
     height: 200px;
@@ -969,16 +951,10 @@ main > div img[src="images/wip.png"] {
 }
 
 #project_popup > div:nth-child(2) {
-<<<<<<< HEAD
     position: relative;
     margin-left: 30px;
     margin-right: 0px;
     padding: 10px;
-=======
-    margin-left: 30px;
-    margin-right: 0px;
-    padding: 20px;
->>>>>>> 3ebcd02028023da3b6cd043ba04ba42ef077b617
 }
 
 #project_popup h3 {
@@ -989,7 +965,6 @@ main > div img[src="images/wip.png"] {
     width: 220px;
 }
 
-<<<<<<< HEAD
 #project_popup > div:nth-child(2) input[type="button"] {
     position: absolute;
     bottom: 0;
@@ -997,8 +972,6 @@ main > div img[src="images/wip.png"] {
     margin-left: calc(-126.73px / 2);
 }
 
-=======
->>>>>>> 3ebcd02028023da3b6cd043ba04ba42ef077b617
 .project_close {
     position: absolute;
     top: 5px;

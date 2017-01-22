@@ -188,26 +188,6 @@ function cargaDinCompleta() {
         h = h.indexOf("%") > -1 ? window.innerWidth * (parseInt(h.replace("%", "")) / 100) : h.replace("px", "");
         $(this).attr("src", "http://placehold.it/"+w+"x"+h);
     });
-<<<<<<< HEAD
-=======
-    $("[data-func]").each(function () {
-        $(this).text(window[$(this).data("func")]);
-    });
-    $("[data-destslide]").each(function () {
-        var hash = window.location.hash;
-        hash = hash ? hash.substr(1) : hash;
-        if(window.location.hash && hash == $(this).data("destslide")) {
-            slideCont();
-        }
-    });
-    $("[data-empty-placeholder]").each(function() {
-        var w = $(this).data("placeholder-width"),
-            h = $(this).data("placeholder-height");
-        w = w.indexOf("%") > -1 ? window.innerWidth * (parseInt(w.replace("%", "")) / 100) : w.replace("px", "");
-        h = h.indexOf("%") > -1 ? window.innerWidth * (parseInt(h.replace("%", "")) / 100) : h.replace("px", "");
-        $(this).attr("src", "http://placehold.it/"+w+"x"+h);
-    });
->>>>>>> 3ebcd02028023da3b6cd043ba04ba42ef077b617
     $("pbar").each(function() {
         var per = $(this).data('percentage'),
             caption = $(this).data('caption');
@@ -239,7 +219,6 @@ function cargaDinCompleta() {
             )
         );
     });
-<<<<<<< HEAD
     // Expand Panel
 	$("#open").click(function(){
 		jQuery("div#panel").slideDown("slow");
@@ -254,8 +233,6 @@ function cargaDinCompleta() {
 	$("#toggle a").click(function () {
 		jQuery("#toggle a").toggle();
 	});	
-=======
->>>>>>> 3ebcd02028023da3b6cd043ba04ba42ef077b617
 }
 
 function getProg() {
@@ -275,26 +252,6 @@ function getPixels(per) {
     return window.innerWidth * per;
 }
 
-<<<<<<< HEAD
-=======
-function getProg() {
-    return curProgress;
-}
-
-function slideCont() {
-    var webpage = $(".web-page.activewp");
-    if(webpage) {
-        webpage.hide("slide", { direction: "right" }, 1000);
-        webpage.removeClass("activewp");
-    }
-    $('[data-request="' + $(this).data("destslide") + '"]').addClass("activewp");
-}
-
-function getPixels(per) {
-    return window.innerWidth * per;
-}
-
->>>>>>> 3ebcd02028023da3b6cd043ba04ba42ef077b617
 lerp = function(a, b, u) {
     return (1 - u) * a + u * b;
 };
