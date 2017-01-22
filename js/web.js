@@ -2,10 +2,16 @@
  * Created by Alvaro on 28/11/2016.
  */
 
+/*
+
+Hacer que lo del document.ready se llame dos veces para que las paginas que se hayan cargado que tengan tb carga dinamica se carguen o bien meter un script con un a $(function) en la pagina?...
+
+*/
+
 var zones = [],
     lastClass = "start",
     time,
-    curProgress = 6;
+    curProgress = 10;
 
 $(window).on("scroll", function() { //En el evento de scroll...
     cur_scroll = $(this).scrollTop();
@@ -13,11 +19,13 @@ $(window).on("scroll", function() { //En el evento de scroll...
     { //Comprobar si el documento ha bajado más de la posición absoluta (en vertical) del menu para hacer que baje con el documento...
         $('#main-nav').addClass("sticky");
         $('#presentacion').css('padding-top', '70px');
+        $('.scrollprog').css('display', 'block');
     }
     else
     { //Si no, hacer que se quede quieto en su posición
         $('#main-nav').removeClass("sticky");
         $('#presentacion').css('padding-top', '0');
+        $('.scrollprog').css('display', 'none');
     }
     botonDeAbajo(cur_scroll > 50);
     var _scroll = Math.round(cur_scroll / 100) * 100, //Redondeamos a las centenas el valor actual del scroll
@@ -28,7 +36,15 @@ $(window).on("scroll", function() { //En el evento de scroll...
         $("[data-dest='" + zones[scroll] + "']").parent().addClass('active');
         lastClass = zones[scroll];
     }
+    if($(".scrollprog")) 
+    {
+        var porcentaje = (cur_scroll - 500) * 100 / ($(document).height() - window.innerHeight - 500);
+        //fade(document.getElementsByClassName("scrollprog")[0], "background-color", {r: 255, g: 0, b: 0}, {r: 0, g: 255, b: 0}, porcentaje);
+        $(".scrollprog").css("width", porcentaje + "%");
+    }
 });
+
+var menu = ["presentacion", "proyectos_destacados", "proyectos", "miembros", "afiliados", "notificaciones", "contacto"];
 
 $(document).ready(function () {
     time = new Date().getTime(); //Esto es mero entretenimiento, no se cuanto variará pero con un i7-6700k y un ssd tarda 27ms
@@ -47,27 +63,19 @@ $(document).ready(function () {
                                 if (!--i) //Hemos definido una función por orden de carga, así evitamos errores al acceder a elementos que aún no existen... (Me suele pasar mucho ^^')
                                 { //Cuando cargue la ultima carga dinámica, procedemos a...
                                     menuResponsivo(function () { //Cargamos el menu de forma "responsiva", aunque bueno, aun sigue siendo para escritorio, puesto que comprobamos la resolución del monitor para cargar el menu de una forma u otra
-                                        var dests = document.querySelectorAll("[data-dest]:not([data-dest='start'])"); //Nuevamente para no ensuciar mucho la sintaxis y para obtener el numero total de elementos...
-                                        for(var j = 0; j < dests.length; ++j)
+                                        //var dests = document.querySelectorAll("[data-dest]:not([data-dest='start'])"); //Nuevamente para no ensuciar mucho la sintaxis y para obtener el numero total de elementos...
+                                        for(var j = 0; j < menu.length; ++j)
                                         { //Por cada elemento vamos a...
-                                            var id = dests[j].dataset.dest,
+                                            var id = menu[j],
                                                 div = document.createElement("div");
                                             div.id = id;
                                             div.className = "dyngen";
                                             document.getElementById("main-nav").parentNode.appendChild(div);
                                             $("#"+id).load("web/includes/" + id + ".html");
                                         }
-                                    });
-                                    $("[data-func]").each(function () {
-                                        $(this).text(window[$(this).data("func")]);
-                                    });
-                                    $("[data-destslide]").each(function () {
-                                        $(this).on('click', function () {
-                                            var webpage = $(".web-page.active");
-                                            webpage.hide("slide", { direction: "left" }, 1000);
-                                            webpage.removeClass("active");
-                                            $('[data-request="' + $(this).data("destslide") + '"]').addClass("active");
-                                        })
+                                        $("[data-destslide]").each(function () {
+                                            $(this).on('click', slideCont);
+                                        });
                                     });
                                 }
                             });
@@ -95,9 +103,9 @@ function menuResponsivo(fn)
     var w = $(window).width(),
         dim = "",
         mn = $("#main-nav");
-    if(w <= 1200 && w > 600)
+    if(w <= 1250 && w > 600)
     {
-        dim = "1k2";
+        dim = "1k25";
         mn.addClass("menuXI"); //Si fuera necesario para el css
     }
     else if(w <= 600)
@@ -105,7 +113,7 @@ function menuResponsivo(fn)
         dim = "6";
         mn.addClass("menuVI"); //Si fuera necesario para el css
     }
-    else if(w > 1200)
+    else if(w > 1250)
     {
         if(mn.hasClass("menuXI"))
             mn.removeClass("menuXI");
@@ -125,13 +133,14 @@ function botonDeAbajo(mostrar)
 }
 
 function setZones(fn)
-{ //Establecemos las zonas en ñlas que habrá un cambio...
-    $("[data-dest]").each(function (ii) {//Ignoramos el primer valor...
+{ //Establecemos las zonas en las que habrá un cambio...
+    $("[data-dest]").each(function (ii) {
+        //Ignoramos el primer valor...
         var item = $(this), //Obtenemos los elementos de al revés para que se establezca como se debe
             inv = item.data("dest"); //Obtenemos el nombre
         if(inv != "")
         {
-            zones[Math.round($("#"+inv).offset().top / 100) * 100] = inv; //Añadimos este destino a dicha zona
+            zones[Math.round(($("#"+inv).offset() != null ? $("#"+inv).offset().top : 0) / 100) * 100] = inv; //Añadimos este destino a dicha zona
             item.on("click", function () { //Esta vez se les asigna que en el click vayan al elemento con la id correspondiente al valor su atributo data-dest
                 $("html, body").animate({scrollTop: $("#"+$(this).data("dest")).offset().top}, 1000); //Hacer una equivalencia
                 return false;
@@ -162,38 +171,105 @@ function cargaDinCompleta() {
         else
             $(this).removeClass("animated fadeInDown");
     });
-    $("#progbar").on('inview', function (event, visible) {
-        if (visible == true)
-            move();
-        else
-            unmove();
+    $("[data-func]").each(function () {
+        $(this).text(window[$(this).data("func")]);
     });
-}
-
-function move() 
-{
-  var elem = document.getElementById("progbar"),
-      width = 0,
-      id = setInterval(frame, 50);
-  function frame() 
-  {
-    if (width >= curProgress)
-      clearInterval(id);
-    else 
-    {
-      ++width; 
-      elem.style.width = width + '%'; 
-      document.getElementById("demo").innerHTML = width * 1 + '%';
-    }
-  }
-}
-
-function unmove() {
-    var elem = document.getElementById("progbar");
-    elem.style.width = "0%";
-    document.getElementById("demo").innerHTML = "0%";
+    $("[data-destslide]").each(function () {
+        var hash = window.location.hash;
+        hash = hash ? hash.substr(1) : hash;
+        if(window.location.hash && hash == $(this).data("destslide")) {
+            slideCont();
+        }
+    });
+    $("[data-empty-placeholder]").each(function() {
+        var w = $(this).data("placeholder-width"),
+            h = $(this).data("placeholder-height");
+        w = w.indexOf("%") > -1 ? window.innerWidth * (parseInt(w.replace("%", "")) / 100) : w.replace("px", "");
+        h = h.indexOf("%") > -1 ? window.innerWidth * (parseInt(h.replace("%", "")) / 100) : h.replace("px", "");
+        $(this).attr("src", "http://placehold.it/"+w+"x"+h);
+    });
+    $("pbar").each(function() {
+        var per = $(this).data('percentage'),
+            caption = $(this).data('caption');
+        $(this).replaceWith(
+            $("<div>").attr('id', 'progress').addClass('graph')
+            .on('inview', function (event, visible) {
+                if(visible)
+                    $(this).children("#bar").prop('Counter', 0).animate({
+                        width: per + '%'
+                    }, 3000, null).children("p")
+                    .animate({ Counter: parseInt(per) }, {
+                        duration: 3000,
+                        easing: 'swing',
+                        step: function () {
+                          $(this).children("span").text(Math.ceil(this.Counter));
+                        },
+                        complete: function() {
+                            this.Counter = 0;
+                        }
+                    });
+                else
+                    $(this).children("#bar").css('width', '0');
+            }).append(
+                $("<div>").attr('id', 'bar').append(
+                    $("<p>").text(caption == null || caption == "" ? "" : "" + caption + ": ")
+                    .append($("<span>").text(per))
+                    .append("%")
+                )
+            )
+        );
+    });
+    // Expand Panel
+	$("#open").click(function(){
+		jQuery("div#panel").slideDown("slow");
+	});	
+	
+	// Collapse Panel
+	$("#close").click(function(){
+		jQuery("div#panel").slideUp("slow");
+	});		
+	
+	// Switch buttons from "Log In | Register" to "Close Panel" on click
+	$("#toggle a").click(function () {
+		jQuery("#toggle a").toggle();
+	});	
 }
 
 function getProg() {
     return curProgress;
 }
+
+function slideCont() {
+    var webpage = $(".web-page.activewp");
+    if(webpage) {
+        webpage.hide("slide", { direction: "right" }, 1000);
+        webpage.removeClass("activewp");
+    }
+    $('[data-request="' + $(this).data("destslide") + '"]').addClass("activewp");
+}
+
+function getPixels(per) {
+    return window.innerWidth * per;
+}
+
+lerp = function(a, b, u) {
+    return (1 - u) * a + u * b;
+};
+
+fade = function(el, property, start, end, duration) {
+    var interval = 10;
+    var steps = duration / interval;
+    var step_u = 1.0 / steps;
+    var u = 0.0;
+    var theInterval = setInterval(function() {
+        if (u >= 1.0) {
+            clearInterval(theInterval);
+        }
+        var r = Math.round(lerp(start.r, end.r, u));
+        var g = Math.round(lerp(start.g, end.g, u));
+        var b = Math.round(lerp(start.b, end.b, u));
+        var colorname = 'rgb(' + r + ',' + g + ',' + b + ')';
+        el.style.setProperty(property, colorname);
+        u += step_u;
+    }, interval);
+};

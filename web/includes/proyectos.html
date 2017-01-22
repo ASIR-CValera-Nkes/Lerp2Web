@@ -1,31 +1,95 @@
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
-<img src="images/wip.png" alt="">
+<h1>Proyectos</h1>
+<br>
+<p class="center">Aquí se mostrarán los últimos enviados por el equipo.</p>
+<hr>
+<br>
+<ul class="proj_cats">
+    <li class="active">TODOS</li>
+    <li>MINIJUEGOS</li>
+    <li>ASSETS UNITY</li>
+    <li>SERVICIOS WEB</li>
+    <li>APLICACIONES DE ESCRITORIO</li>
+    <li>PLUGINS MC</li>
+</ul>
+<!--- <img id="ghost_popup" style="display: none; margin-top: 15px; margin-left: 30px;" src="https://i.gyazo.com/04e6b017e41e2de2b8ec888389f82f9e.png" alt=""> -->
+<div id="project_popup">
+    <div>
+        <div class="proj_cat">Asset de Unity</div> <!--- Según la categoría esata etiqueta será de un color o de otro -->
+        <img src="https://placehold.it/640x400" alt="">
+    </div>
+    <div>
+        <h2 class="orange">Project name</h2>
+        <hr class="brange">
+        <br>
+        <div>
+            <div>
+                <h3 class="orange">Autor</h3>
+                <h3>Ikillnukes</h3>
+            </div>
+            <div>
+                <h3 class="orange">Fecha de creación</h3>
+                <h3>00-00-0000 00:00:00</h3>
+            </div>
+            <div>
+                <h3 class="orange">Fecha de modificación</h3>
+                <h3>00-00-0000 00:00:00</h3>
+            </div>
+            <div>
+                <h3 class="orange">Precio</h3>
+                <h3>Gratuito / 5.00$</h3>
+            </div>
+            <div>
+                <h3 class="orange">Líneas de código</h3>
+                <h3>20.000 líneas de código</h3>
+            </div>
+            <div>
+                <h3 class="orange">Calificación</h3>
+                <h3>Estrellas (3.5 / 5 en 50 votos)</h3>
+            </div>
+            <br>
+            <p>Aquí iría la descripción. Always continue the climb. It is possible for you to do whatever you choose, if you first get to know who you are and are willing to work with a power that is greater than ourselves to do it.</p>
+            <br>
+            <input type="button" value="Ir al producto" />
+        </div>
+    </div>
+    <div class="project_close"><i class="fa fa-fw fa-close"></i></div>
+</div>
+<div class="projcontainer">
+    <!--- <div class="thumbnail">
+        <img src="https://placehold.it/640x400">
+        <div class="caption">
+            <h3>Thumbnail label</h3>
+            <p>Thumbnail caption...</p>
+        </div>
+        <div class="mask">
+            <a href="#single-project" class="more">
+                <i class="fa fa-fw fa-plus"></i>
+            </a>
+        </div>
+    </div> -->
+</div>
+<h3 class="center">[1 2 3 4 5 6 7 ... 50 (51) 52 ... 98 99 100]</h3>
+<!--- Al hacer el paginator hacer que con un &section=xxx se vaya a x sección -->
+<br>
+<center>
+    <h3>¿No aparece el proyecto que buscas en esta lista?</h3>
+    <br>
+    <p>Busca lo que quieras, apretando este botón.</p>
+    <br>
+    <input type="button" value="Buscar proyecto" />
+</center>
+<script>
+    $(function() {
+       for(var i = 0; i < 9; ++i) {
+           var c = '<div class="thumbnail"><img src="https://placehold.it/640x400"><div class="caption"><h3>Project name</h3><p>Project description</p></div><div class="mask"><span class="more"><i class="fa fa-fw fa-plus"></i></span></div></div>';
+           $(".projcontainer").append(c);
+       }
+        $(".more").on('click', function() {
+           $("#project_popup").show(1000).css('display', 'flex');
+        });
+        $("#project_popup").on('click', function() {
+           $(this).hide(1000); 
+        });
+    });
+</script>
 <div class="triangle"></div>
