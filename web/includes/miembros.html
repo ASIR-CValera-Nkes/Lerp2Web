@@ -3,9 +3,36 @@
 <p class="center">Estos somos los actuales staffs del equipo.</p>
 <hr>
 <br>
-<center>
+<!---<center>
     <img src="https://i.gyazo.com/c6ca1b7241681bc8295f9198accc4631.png" alt="">
-</center>
+</center> -->
+<div class="staff">
+    <!--- <div class="thumbnail">
+        <img src="https://placehold.it/400x400">
+        <div class="caption">
+            <h3>Member name</h3>
+            <p>
+                <figure class="ctint member"><img src="images/icons/facebook.png" alt="" class="circled"></figure>
+                <figure class="ctint member"><img src="images/icons/twitter.png" alt="" class="circled"></figure>
+                <figure class="ctint member"><img src="images/icons/github.png" alt="" class="circled"></figure>
+            </p>
+        </div>
+        <div class="mask">
+            <h3>Designer</h3>
+            <br><br>
+            When you stop expecting people to be perfect, you can like them for who they are.
+        </div>
+    </div> -->
+</div>
+<script>
+    $(function() {
+        var grupos = ["Administrador", "Administrador", "Moderador", "Moderador", "Redactor", "Promocionador"];
+       for(var i = 0; i < grupos.length; ++i) {
+           var c = '<div class="thumbnail"><img src="https://placehold.it/400x400"><div class="caption"><h3>Member name</h3><p><figure class="ctint member"><img src="images/icons/facebook.png" alt="" class="circled"></figure><figure class="ctint member"><img src="images/icons/twitter.png" alt="" class="circled"></figure><figure class="ctint member"><img src="images/icons/github.png" alt="" class="circled"></figure></p></div><div class="mask"><h3>'+grupos[i]+'</h3><br><br>When you stop expecting people to be perfect, you can like them for who they are.</div></div>';
+           $(".staff").append(c);
+       }
+    });
+</script>
 <!--- Cambiar esta m...
 <div class="staff">
     <div>

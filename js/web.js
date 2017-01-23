@@ -125,7 +125,7 @@ function menuResponsivo(fn)
 
 function botonDeAbajo(mostrar)
 { //Esto hace que el boton se muestre con un efecto de transición
-    var tiempo = 250;
+    var tiempo = 1000;
     if(mostrar)
         $("#subir").fadeIn(tiempo * 2);
     else
@@ -221,17 +221,17 @@ function cargaDinCompleta() {
     });
     // Expand Panel
 	$("#open").click(function(){
-		jQuery("div#panel").slideDown("slow");
+		$("div#panel").slideDown("slow");
 	});	
 	
 	// Collapse Panel
 	$("#close").click(function(){
-		jQuery("div#panel").slideUp("slow");
+		$("div#panel").slideUp("slow");
 	});		
 	
 	// Switch buttons from "Log In | Register" to "Close Panel" on click
 	$("#toggle a").click(function () {
-		jQuery("#toggle a").toggle();
+		$("#toggle a").toggle();
 	});	
 }
 

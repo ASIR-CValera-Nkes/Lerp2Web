@@ -346,7 +346,7 @@ main > div {
     border-left: 585px outset transparent;
     border-right: 585px outset transparent;
     position: absolute;
-    bottom: -30px;
+    bottom: -29px;
     left: calc(50% - 585px);
     z-index: 3;
     opacity: 0;
@@ -512,18 +512,19 @@ main > div img[src="images/wip.png"] {
     filter: invert(0.2) sepia(1) saturate(2);
     width: 32px;
     height: 32px;
+    margin: 5px 10px!important;
 }
 
-.ctint.member:hover .circled,
+/*.ctint.member:hover .circled,
 .ctint.social:hover .circled,
 .ctint.member:not(:hover) .circled,
 .ctint.social:not(:hover) .circled {
     transition-duration: 1s;
-}
+}*/
 
 .ctint.member:hover .circled,
 .ctint.social:hover .circled {
-    filter: invert(1);
+    filter: invert(1)!important;
 }
 
 .ctint.social .circled {
@@ -669,17 +670,109 @@ main > div img[src="images/wip.png"] {
 /* ----------------------------------------------------------------------------------------------------------------------------- */
 /*                                                           MIEMBROS                                                            */
 
-.staff > div > h2 {
-    text-align: center;
-    text-decoration: underline;
-}
-.staff > div > div {
+.staff > div {
     display: inline-block;
-    width: 33%;
-    min-width: 250px;
-    height: 150px;
+    min-width: 200px;
+    border: 1px white solid;
+}
+
+.staff {
+    padding-left: 30px;
+}
+
+.staff > div {
+    display: inline-block;
+    min-width: 200px;
     border: 1px black solid;
 }
+
+.staff .thumbnail {
+    padding: 0 0 97px 0;
+    overflow: hidden;
+    position: relative;
+    box-shadow: none;
+    text-align: center;
+    background: #272727;
+    display: inline-block;
+    width: calc(33% - 15px);
+    margin-top: 15px;
+    margin-right: 15px;
+    line-height: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+    transition: all 0.2s ease-in-out;
+}
+
+.staff .thumbnail .caption {
+    padding: 10px 4px 4px 4px;
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    max-height: 97px;
+}
+
+.staff .thumbnail > img {
+    display: block;
+    max-width: 100%;
+    padding: 4px 4px 0 4px;
+}
+
+.staff .thumbnail:hover .mask {
+    top: 0;
+}
+
+.staff .thumbnail:hover .caption > h3 {
+    color: #272727;
+}
+
+.staff .thumbnail:hover .circled {
+    filter: none;
+}
+
+.staff .thumbnail .more {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -40px;
+    margin-left: -40px;
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+    line-height: 80px;
+    font-size: 300%;
+}
+
+.staff .thumbnail h3 {
+	color: #fef16c;
+	line-height: 40px;
+	font-size: 20px;
+}
+
+.staff .thumbnail h3, 
+.staff .thumbnail p {
+	margin: 0;
+	padding: 0;
+	position: relative;
+	z-index: 4;
+}
+
+.staff .thumbnail .mask {
+    z-index: 0;
+    padding: 20px 10px;
+	top: 100%;
+    width: 100%;
+    height: 100%;
+    max-width: 410px;
+    max-height: 512px;
+	background: rgba(254, 241, 108, .85);
+	transition: all .2s ease-out;
+}
+
+.staff .thumbnail .mask h3 {
+    color: #272727!important;
+    font-weight: bold;
+    font-size: 200%;
+}
+
 .members > div {
     display: inline-block;
     width: 64px;
@@ -876,9 +969,7 @@ main > div img[src="images/wip.png"] {
     border: 1px black solid;
 }
 
-.thumbnail {
-    width: 100%;
-    height: 100%;
+.projcontainer .thumbnail {
     padding: 0 0 54px 0;
     overflow: hidden;
     position: relative;
@@ -889,13 +980,12 @@ main > div img[src="images/wip.png"] {
     width: calc(33% - 15px);
     margin-top: 15px;
     margin-right: 15px;
-    display: block;
     line-height: 20px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
     transition: all 0.2s ease-in-out;
 }
 
-.thumbnail .caption {
+.projcontainer .thumbnail .caption {
     background-color: #272727;
     padding: 10px 4px 4px 4px;
     z-index: 1;
@@ -904,17 +994,17 @@ main > div img[src="images/wip.png"] {
     max-height: 54px;
 }
 
-.thumbnail > img {
+.projcontainer .thumbnail > img {
     display: block;
     max-width: 100%;
     padding: 4px 4px 0 4px;
 }
 
-.thumbnail:hover .mask {
+.projcontainer .thumbnail:hover .mask {
     top: 0;
 }
 
-.thumbnail .more {
+.projcontainer .thumbnail .more {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -927,29 +1017,32 @@ main > div img[src="images/wip.png"] {
     font-size: 300%;
 }
 
-.thumbnail h3 {
+.projcontainer .thumbnail h3 {
 	color: #fef16c;
 	margin-top: 10px;
 	font-size: 20px;
 }
 
-.thumbnail h3, .thumbnail p {
+.projcontainer .thumbnail h3, 
+.projcontainer .thumbnail p {
 	margin: 0;
 	padding: 0;
 	position: relative;
 	z-index: 4;
 }
 
-.thumbnail .mask {
+.projcontainer .thumbnail .mask {
     z-index: 0;
-	opacity: 0.85;
+	opacity: .85;
 	filter: alpha(opacity=85);
 	top: 100%;
     margin: 4px 0px 4px 4px;
     width: calc(100% - 8px);
     height: calc(100% - 58px);
+    max-width: 650px;
+    max-height: 460px;
 	background: #272727;
-	transition: all 0.2s ease-out;
+	transition: all .2s ease-out;
 }
 
 .proj_cats {
