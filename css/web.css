@@ -676,44 +676,12 @@ main > div img[src="images/wip.png"] {
     border: 1px white solid;
 }
 
-.staff {
-    padding-left: 30px;
-}
-
-.staff > div {
-    display: inline-block;
-    min-width: 200px;
-    border: 1px black solid;
-}
-
 .staff .thumbnail {
     padding: 0 0 97px 0;
-    overflow: hidden;
-    position: relative;
-    box-shadow: none;
-    text-align: center;
-    background: #272727;
-    display: inline-block;
-    width: calc(33% - 15px);
-    margin-top: 15px;
-    margin-right: 15px;
-    line-height: 20px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
-    transition: all 0.2s ease-in-out;
 }
 
 .staff .thumbnail .caption {
-    padding: 10px 4px 4px 4px;
-    z-index: 1;
-    position: absolute;
-    width: 100%;
     max-height: 97px;
-}
-
-.staff .thumbnail > img {
-    display: block;
-    max-width: 100%;
-    padding: 4px 4px 0 4px;
 }
 
 .staff .thumbnail:hover .mask {
@@ -728,42 +696,14 @@ main > div img[src="images/wip.png"] {
     filter: none;
 }
 
-.staff .thumbnail .more {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-top: -40px;
-    margin-left: -40px;
-    width: 80px;
-    height: 80px;
-    border-radius: 40px;
-    line-height: 80px;
-    font-size: 300%;
-}
-
 .staff .thumbnail h3 {
-	color: #fef16c;
 	line-height: 40px;
-	font-size: 20px;
-}
-
-.staff .thumbnail h3, 
-.staff .thumbnail p {
-	margin: 0;
-	padding: 0;
-	position: relative;
-	z-index: 4;
 }
 
 .staff .thumbnail .mask {
     z-index: 0;
     padding: 20px 10px;
 	top: 100%;
-    width: 100%;
-    height: 100%;
-    max-width: 410px;
-    max-height: 512px;
-	background: rgba(254, 241, 108, .85);
 	transition: all .2s ease-out;
 }
 
@@ -959,90 +899,30 @@ main > div img[src="images/wip.png"] {
 /* ----------------------------------------------------------------------------------------------------------------------------- */
 /*                                                           PROYECTOS                                                           */
 
-.projcontainer {
-    padding-left: 30px;
-}
-
-.projcontainer > div {
-    display: inline-block;
-    min-width: 200px;
-    border: 1px black solid;
-}
-
 .projcontainer .thumbnail {
     padding: 0 0 54px 0;
-    overflow: hidden;
-    position: relative;
-    box-shadow: none;
-    text-align: center;
-    background: #272727;
-    display: inline-block;
-    width: calc(33% - 15px);
-    margin-top: 15px;
-    margin-right: 15px;
-    line-height: 20px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
-    transition: all 0.2s ease-in-out;
 }
 
 .projcontainer .thumbnail .caption {
     background-color: #272727;
-    padding: 10px 4px 4px 4px;
-    z-index: 1;
-    position: absolute;
-    width: 100%;
     max-height: 54px;
-}
-
-.projcontainer .thumbnail > img {
-    display: block;
-    max-width: 100%;
-    padding: 4px 4px 0 4px;
 }
 
 .projcontainer .thumbnail:hover .mask {
     top: 0;
 }
 
-.projcontainer .thumbnail .more {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-top: -40px;
-    margin-left: -40px;
-    width: 80px;
-    height: 80px;
-    border-radius: 40px;
-    line-height: 80px;
-    font-size: 300%;
-}
-
 .projcontainer .thumbnail h3 {
-	color: #fef16c;
 	margin-top: 10px;
-	font-size: 20px;
-}
-
-.projcontainer .thumbnail h3, 
-.projcontainer .thumbnail p {
-	margin: 0;
-	padding: 0;
-	position: relative;
-	z-index: 4;
 }
 
 .projcontainer .thumbnail .mask {
-    z-index: 0;
-	opacity: .85;
-	filter: alpha(opacity=85);
-	top: 100%;
     margin: 4px 0px 4px 4px;
     width: calc(100% - 8px);
     height: calc(100% - 58px);
     max-width: 650px;
     max-height: 460px;
-	background: #272727;
-	transition: all .2s ease-out;
+	background: rgba(39, 39, 39, .85);
 }
 
 .proj_cats {
@@ -1158,6 +1038,89 @@ main > div img[src="images/wip.png"] {
 
 .fadeInDown {
     animation-name: fadeInDown;
+}
+
+/* ----------------------------------------------------------------------------------------------------------------------------- */
+/*                                                            LITTLE SLIDER                                                      */
+
+.staff,
+.projcontainer {
+    padding-left: 30px;
+}
+
+.staff > div,
+.projcontainer > div {
+    display: inline-block;
+    min-width: 200px;
+    border: 1px black solid;
+}
+
+.staff .thumbnail,
+.projcontainer .thumbnail {
+    overflow: hidden;
+    position: relative;
+    box-shadow: none;
+    text-align: center;
+    background: #272727;
+    display: inline-block;
+    width: calc(33% - 15px);
+    margin-top: 15px;
+    margin-right: 15px;
+    line-height: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+    transition: all 0.2s ease-in-out;
+}
+
+.staff .thumbnail .caption,
+.projcontainer .thumbnail .caption {
+    padding: 10px 4px 4px 4px;
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+}
+
+.staff .thumbnail > img,
+.projcontainer .thumbnail > img {
+    display: block;
+    max-width: 100%;
+    padding: 4px 4px 0 4px;
+}
+
+.staff .thumbnail .more,
+.projcontainer .thumbnail .more {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -40px;
+    margin-left: -40px;
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+    line-height: 80px;
+    font-size: 300%;
+}
+
+.staff .thumbnail h3,
+.projcontainer .thumbnail h3 {
+	color: #fef16c;
+	font-size: 20px;
+}
+
+.staff .thumbnail h3, 
+.staff .thumbnail p,
+.projcontainer .thumbnail h3, 
+.projcontainer .thumbnail p {
+	margin: 0;
+	padding: 0;
+	position: relative;
+	z-index: 4;
+}
+
+.staff .thumbnail .mask,
+.projcontainer .thumbnail .mask {
+    z-index: 0;
+	top: 100%;
+	transition: all .2s ease-out;
 }
 
 /* ----------------------------------------------------------------------------------------------------------------------------- */
